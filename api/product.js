@@ -1,14 +1,8 @@
-module.exports = async function handler(req, res) {
+module.exports = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('Access-Control-Allow-Origin', '*');
     
-    if (req.method === 'OPTIONS') {
-      return res.status(200).end();
-    }
-    
-    if (req.method !== 'GET') {
-      return res.status(405).json({ error: 'Only GET allowed' });
-    }
+    console.log('PRODUCTS ENDPOINT CALLED - UNIQUE CODE');
     
     const products = [
       {
@@ -24,20 +18,15 @@ module.exports = async function handler(req, res) {
         price: 129990,
         category: "Ноутбуки",
         inStock: true
-      },
-      {
-        id: 3,
-        name: "AirPods Pro",
-        price: 24990,
-        category: "Наушники",
-        inStock: false
       }
     ];
     
     res.status(200).json({
       success: true,
+      message: "ДАННЫЕ ПРОДУКТОВ - УНИКАЛЬНЫЙ КОД",
       products: products,
       count: products.length,
+      endpoint: "product.js",
       timestamp: new Date().toISOString()
     });
-  };
+};
