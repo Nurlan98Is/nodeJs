@@ -9,7 +9,9 @@ module.exports = async function handler(req, res) {
     if (req.method !== 'GET') {
       return res.status(405).json({ error: 'Only GET allowed' });
     }
-    
+    if (path === '/api/user') {
+        return 'отрпавили ползователя'
+    }
     res.status(200).json({
       message: "🚀 Добро пожаловать в API!",
       version: "1.0.0",
