@@ -1,3 +1,5 @@
-export default function handler(req, res) {
-    res.json({ message: 'Hello from separate endpoint!' });
+
+module.exports = function handler(req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json({ message: 'Hello from Vercel!', timestamp: new Date().toISOString() });
   }
